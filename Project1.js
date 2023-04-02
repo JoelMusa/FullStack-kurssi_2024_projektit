@@ -4,7 +4,7 @@ const fs = require("fs");
 const { join } = require("path");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Set up body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,16 +12,14 @@ app.use(bodyParser.json());
 
 app.use(
   express.static(
-    join(
-      "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Master-2023/Projekti1"
-    )
+    join("C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1")
   )
 );
 
 // Define routes
 app.get("/", (req, res) => {
   res.sendFile(
-    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Master-2023/Projekti1/index.html"
+    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/index.html"
   );
 });
 
@@ -56,7 +54,7 @@ app.get("/guestbook", (req, res) => {
 
 app.get("/newmessage", (req, res) => {
   res.sendFile(
-    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Master-2023/Projekti1/newmessage.html"
+    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/newmessage.html"
   );
 });
 
@@ -80,22 +78,20 @@ app.post("/newmessage", (req, res) => {
     // Write the updated messages back to the file
     fs.writeFile("./messages.json", JSON.stringify(messages), (err) => {
       if (err) throw err;
-
+      // Vaihda tämä vielä.
       res.redirect("/guestbook");
     });
   });
 });
-app.get("/example", function (req, res) {
-  res.sendFile(
-    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Master-2023/Projekti1/guestbook.html"
-  );
-});
+
 app.get("/ajaxmessage", (req, res) => {
   res.sendFile(
-    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Master-2023/Projekti1/AJAX.html"
+    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/AJAX.html"
   );
 });
 
+app.post("/ajaxmessage", (req, res) => {});
+
 app.listen(port, function () {
-  console.log("Listening port 3000!");
+  console.log("Listening port " + port + "!");
 });

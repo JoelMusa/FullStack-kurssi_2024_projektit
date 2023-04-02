@@ -57,7 +57,7 @@
     <main>
       <h1 class="h1 text-center">Ajax Message</h1>
       <div id="form">
-        <form  method="post" action="/newmessage">
+        <form>
           <div class="mb-3">
             <label for="username" class="form-label">Username:</label>
             <input
@@ -88,13 +88,34 @@
             ></textarea>
           </div>
           <div class="col-md-1">
-              <button type="submit" class="btn btn-secondary" id="nappi">
+              <button type="submit" class="btn btn-secondary" id="nappi" onclick="ajaxMessage()">
                 Submit
               </button>
             </div>
           </div>
         </form>
+        <div id="message-list"></div>
       </div>
     </main>
   </body>
 </html>
+<script>
+  function ajaxMessage() {
+    var formData = { username: document.getElementById("username").value,
+    country: document.getElementById("country").value,
+    message: document.getElementById("message").value };
+    
+    document.ajax({
+					url: "/ajaxmessage",
+					type: "POST",
+					data: formData,
+					success: function(response) {
+						document.getElementById("message-list").html(response);
+					},
+					error: function() {
+						alert("Error sending message.");
+					}
+
+  });
+}
+</script>
