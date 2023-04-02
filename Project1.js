@@ -6,23 +6,24 @@ const { join } = require("path");
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Set up body-parser middleware
+// Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+// SOurce directory
 app.use(
   express.static(
     join("C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1")
   )
 );
 
-// Define routes
+// Home route
 app.get("/", (req, res) => {
   res.sendFile(
     "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/index.html"
   );
 });
 
+//Guestbook path
 app.get("/guestbook", (req, res) => {
   fs.readFile("./messages.json", (err, data) => {
     if (err) throw err;
@@ -38,8 +39,9 @@ app.get("/guestbook", (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <style>h1{text-align: center}</style>
       </head>
-      <body><h1 class="h1 text-center">Guestbook</h1><div class="container mt-3"><table class="table table-bordered"><thead><tr><th>Username</th><th>Country</th><th>Message
+      <body><h1 class="h1">Guestbook</h1><div class="container mt-3"><table class="table table-bordered"><thead><tr><th>Username</th><th>Country</th><th>Message
       </th></tr></thead><tbody>`;
 
     for (const message of messages) {
@@ -52,6 +54,7 @@ app.get("/guestbook", (req, res) => {
   });
 });
 
+//Newmessage path
 app.get("/newmessage", (req, res) => {
   res.sendFile(
     "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/newmessage.html"
@@ -84,14 +87,41 @@ app.post("/newmessage", (req, res) => {
   });
 });
 
-app.get("/ajaxmessage", (req, res) => {
-  res.sendFile(
-    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/AJAX.html"
-  );
-});
-
-app.post("/ajaxmessage", (req, res) => {});
-
+//Defining port
 app.listen(port, function () {
   console.log("Listening port " + port + "!");
 });
+
+/*app.get("/ajaxmessage", (req, res) => {
+  res.sendFile(
+    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/AJAX.html"
+  );
+});*/
+
+/*app.post("/ajaxmessage", (req, res) => {
+  const { username, country, message } = req.body;
+
+  fs.readFile("./messages.json", (err, jsonString) => {
+    if (err) {
+      console.log("Error reading file:", err);
+      return;
+    }
+
+    const messages = JSON.parse(jsonString);
+
+    messages.push({
+      username: username,
+      country: country,
+      message: message,
+    });
+    fs.writeFile("./messages.json", JSON.stringify(messages), (err) => {
+      if (err) {
+        console.log("Error writing file:", err);
+        return res.sendStatus(500);
+      }
+
+      // Retrieve all messages from the JSON file and send them back to the client
+      res.redirect("/guestbook");
+    });
+  });
+});*/

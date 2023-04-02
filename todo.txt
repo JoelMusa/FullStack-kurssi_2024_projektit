@@ -1,5 +1,0 @@
-1.Ajax kutsu
-2. Miten voin käyttää yhtä html fileä kaikkiin ja tehdä useamman res.send per polku
-3. Bootstrap yms muotoilut
-4. Miten hoitaa javascriptit yms sovelluksessa (omat Tiedostot)
-4.

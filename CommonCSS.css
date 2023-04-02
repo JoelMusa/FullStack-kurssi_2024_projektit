@@ -1,10 +1,25 @@
-#nappi {
-  float: left;
-}
 #form {
   padding-left: 100px;
   padding-right: 100px;
 }
 #otsikko {
   padding: 20px;
+}
+.form-control,
+.form-label {
+  display: block;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+body {
+  background-color: whitesmoke;
+}
+.nav-link {
+  color: white;
 }
