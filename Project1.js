@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const { join } = require("path");
+const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,17 +10,11 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // SOurce directory
-app.use(
-  express.static(
-    join("C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1")
-  )
-);
+app.use("/Fullstack-Projekti1", express.static("public"));
 
 // Home route
 app.get("/", (req, res) => {
-  res.sendFile(
-    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/index.html"
-  );
+  res.sendFile(path.join(__dirname, "/index.html"));
 });
 
 //Guestbook path
@@ -56,9 +50,7 @@ app.get("/guestbook", (req, res) => {
 
 //Newmessage path
 app.get("/newmessage", (req, res) => {
-  res.sendFile(
-    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/newmessage.html"
-  );
+  res.sendFile(path.join(__dirname, "/newmessage.html"));
 });
 
 app.post("/newmessage", (req, res) => {
