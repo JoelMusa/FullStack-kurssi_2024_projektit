@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// SOurce directory
+// Source directory
 app.use("/Fullstack-Projekti1", express.static("public"));
 
 // Home route
@@ -84,13 +84,11 @@ app.listen(port, function () {
   console.log("Listening port " + port + "!");
 });
 
-/*app.get("/ajaxmessage", (req, res) => {
-  res.sendFile(
-    "C:/Users/jokke/OneDrive/Tiedostot/GitHub/FullStack-Projekti1/AJAX.html"
-  );
-});*/
+app.get("/ajaxmessage", (req, res) => {
+  res.sendFile(path.join(__dirname, "/AJAX.html"));
+});
 
-/*app.post("/ajaxmessage", (req, res) => {
+app.post("/ajaxmessage", (req, res) => {
   const { username, country, message } = req.body;
 
   fs.readFile("./messages.json", (err, jsonString) => {
@@ -116,4 +114,4 @@ app.listen(port, function () {
       res.redirect("/guestbook");
     });
   });
-});*/
+});
