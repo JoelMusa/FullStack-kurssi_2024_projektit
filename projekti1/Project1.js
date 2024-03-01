@@ -79,10 +79,6 @@ app.post("/newmessage", (req, res) => {
   });
 });
 
-//Defining port
-app.listen(port, function () {
-  console.log("Listening port " + port + "!");
-});
 
 app.get("/ajaxmessage", (req, res) => {
   res.sendFile(path.join(__dirname, "/AJAX.html"));
@@ -115,3 +111,11 @@ app.post("/ajaxmessage", (req, res) => {
     });
   });
 });
+
+
+//Defining port
+app.listen(port, function () {
+  console.log("Listening port " + port + "!");
+});
+
+
