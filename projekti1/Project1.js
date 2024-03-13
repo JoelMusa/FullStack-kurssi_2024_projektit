@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Source directory
-app.use("/Fullstack-Projekti1", express.static("public"));
+app.use("/Fullstack-Projekti1/projekti1", express.static("public"));
 
 // Home route
 app.get("/", (req, res) => {
@@ -73,9 +73,8 @@ app.post("/newmessage", (req, res) => {
     // Write the updated messages back to the file
     fs.writeFile("./messages.json", JSON.stringify(messages), (err) => {
       if (err) throw err;
-      // Vaihda tämä vielä.
-      res.redirect("/guestbook");
     });
+    res.redirect('/guestbook')
   });
 });
 
@@ -87,27 +86,37 @@ app.get("/ajaxmessage", (req, res) => {
 app.post("/ajaxmessage", (req, res) => {
   const { username, country, message } = req.body;
 
-  fs.readFile("./messages.json", (err, jsonString) => {
+  if (!username || !country || !message) {
+    res.send("Error: All fields are required.");
+    return;
+  }
+
+  fs.readFile("./messages.json", (err, data) => {
     if (err) {
       console.log("Error reading file:", err);
       return;
     }
 
-    const messages = JSON.parse(jsonString);
+    const messages = JSON.parse(data);
 
-    messages.push({
-      username: username,
-      country: country,
-      message: message,
-    });
+    messages.push({ username, country, message });
+
+    let html = `<h1 class="h1">Guestbook</h1><div class="container mt-3"><table class="table table-bordered"><thead><tr><th>Username</th><th>Country</th><th>Message
+      </th></tr></thead><tbody>`;
+
+    for (const message of messages) {
+      html += `<tr><td>${message.username}</td><td>${message.country}</td><td>${message.message}</td></tr>`;
+    }
+
+    html += "</tbody></table></div>";
+
+    res.send(html);
+
     fs.writeFile("./messages.json", JSON.stringify(messages), (err) => {
       if (err) {
         console.log("Error writing file:", err);
         return res.sendStatus(500);
       }
-
-      // Retrieve all messages from the JSON file and send them back to the client
-      res.redirect("/guestbook");
     });
   });
 });
