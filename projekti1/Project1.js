@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 
 //Guestbook path
 app.get("/guestbook", (req, res) => {
+
   fs.readFile("./messages.json", (err, data) => {
     if (err) throw err;
 

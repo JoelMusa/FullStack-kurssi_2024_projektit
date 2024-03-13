@@ -19,21 +19,187 @@
   <body>
     <header>
       <nav
-        class="navbar bg-dark border-bottom border-body"
+        class="navbar navbar-expand-lg bg-dark border-bottom border-body"
         data-bs-theme="dark"
       >
         <div class="container-fluid">
-          <a class="navbar-brand" href="/projekti1/index.html"> #Discuss </a>
+          <a class="navbar-brand" href="#">
+            <img
+              src="https://cdn.pixabay.com/photo/2016/06/29/16/36/logo-1487245_960_720.png"
+              alt="Logo"
+              width="36"
+              height="30"
+              class="d-inline-block align-text-top"
+            />
+            Patata
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/ajaxmessage">Ajax message</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/newmessage">New message</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/guestbook">Message list</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
     <!---->
     <page>
-      <!-- Navbar content -->
+      <div class="container px-4 py-5 border-bottom" id="featured-3">
+        <h2 class="pb-2 border-bottom">Contents</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+          <div class="feature col">
+            <div
+              class="feature-icon d-inline-flex align-items-center justify-content-center"
+            >
+              <i class="bi bi-code-square"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Ajax messsage</h3>
+            <p>
+              Page consist a form, in which function picks each input's value
+              after pressing the button. Then sends the values as an ajax call
+              to the backend and stores the values to a JSON file. After that it
+              sends all the messages from the JSON file back to the page.
+            </p>
+            <a href="/ajaxmessage" class="icon-link">
+              Go to page
+              <svg class="bi"><use xlink:href="#chevron-right" /></svg>
+            </a>
+          </div>
+          <div class="feature col">
+            <div
+              class="feature-icon d-inline-flex align-items-center justify-content-center"
+            >
+              <i class="bi bi-chat-left-dots"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">New Message</h3>
+            <p>
+              Page consist a form where it uses form method "post" to send the
+              field values to the backend. After storing the new values to a
+              JSON file it redirects you to the Message list page where you can
+              find the contents of the file
+            </p>
+            <a href="/newmessage" class="icon-link">
+              Go to page
+              <svg class="bi"><use xlink:href="#chevron-right" /></svg>
+            </a>
+          </div>
+          <div class="feature col">
+            <div
+              class="feature-icon d-inline-flex align-items-center justify-content-center"
+            >
+              <i class="bi bi-list"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Message list</h3>
+            <p>
+              This page formats all the contents of a "messages.json" file as a
+              table. You can find your message here after using either message
+              sending form
+            </p>
+            <a href="/guestbook" class="icon-link">
+              Go to page
+              <svg class="bi"><use xlink:href="#chevron-right" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="b-example-divider bg-tertiary" height="2px">
+        <p class="bg-tertiary"></p>
+      </div>
+
+      <div class="px-4 py-5 my-5 text-center">
+        <img
+          class="d-block mx-auto mb-4"
+          src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+          alt="GitHub logo"
+          width="72"
+          height="72"
+        />
+        <h1 class="display-5 fw-bold text-body-emphasis">Project repository</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">
+            Here is a link to my GitHub repository where i will be posting all
+            projects done in this course. <br />Feel free to visit my other
+            repositories too:).
+          </p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a
+              class="btn btn-dark btn-lg px-4"
+              href="https://github.com/JoelMusa/FullStack-kurssi_2024_projektit"
+              role="button"
+              >To repository</a
+            >
+          </div>
+        </div>
+      </div>
     </page>
     <!---->
     <footer>
-      <!-- Navbar content -->
+      <div class="container">
+        <footer
+          class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+        >
+          <p class="col-md-4 mb-0 text-body-secondary">
+            &copy; 2024 Joel Musakka with Bootstrap
+          </p>
+
+          <a
+            href="/"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+          >
+            <svg class="bi me-2" width="40" height="32">
+              <use xlink:href="#bootstrap" />
+            </svg>
+          </a>
+
+          <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item">
+              <a href="/" class="nav-link px-2 text-body-secondary">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-body-secondary disabled"
+                >Features</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-body-secondary disabled"
+                >Pricing</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-body-secondary disabled"
+                >FAQs</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-body-secondary disabled"
+                >About</a
+              >
+            </li>
+          </ul>
+        </footer>
+      </div>
     </footer>
     <!--Content here-->
     <script
