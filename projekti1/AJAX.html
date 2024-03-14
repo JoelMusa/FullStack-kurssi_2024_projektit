@@ -22,7 +22,7 @@
         class="navbar navbar-expand-lg bg-dark border-bottom border-body"
         data-bs-theme="dark"
       >
-        <div class="container-md">
+        <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img
               src="https://cdn.pixabay.com/photo/2016/06/29/16/36/logo-1487245_960_720.png"
@@ -64,9 +64,9 @@
       </nav>
     </header>
     <page>
-      <div class="px-4 py-5 my-5 ">
-      <h1 class="h1">Ajax Message</h1>
-      <div id="form">
+      <div class="container px-4 py-5" id="featured-3">
+      <h1 class="pb-2">Ajax Message</h1>
+      <div class="border-bottom" id="form">
         
           <div class="mb-3">
             <input
@@ -105,12 +105,58 @@
               </button>
             </div>
           </div>
-        
-        <div id="messageList"></div>
       </div>
       </div>
+      <div class="container px-4 py-5" id="featured-3">
+      <div id="messageList"></div></div>
     </page>
+    <!---->
+    <footer>
+      <div class="container">
+        <footer
+          class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+        >
+          <p class="col-md-4 mb-0 text-body-secondary">
+            &copy; 2024 Joel Musakka with Bootstrap
+          </p>
 
+          <a
+            href="/"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+          >
+            <svg class="bi me-2" width="40" height="32">
+              <use xlink:href="#bootstrap" />
+            </svg>
+          </a>
+
+          <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item">
+              <a href="/" class="nav-link px-2 text-body-secondary">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-body-secondary disabled"
+                >Features</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-body-secondary disabled"
+                >Pricing</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-body-secondary disabled"
+                >FAQs</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-body-secondary disabled"
+                >About</a
+              >
+            </li>
+          </ul>
+        </footer>
+      </div>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
