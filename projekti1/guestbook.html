@@ -65,7 +65,7 @@
     </header>
     <page>
       <div class="container px-4 py-5" id="featured-3">
-        <h1 class="pb-2 border-bottom">Guestbook</h1>
+        <h1 class="pb-2 border-bottom">Messages</h1>
         <div id="guestbook">
           <div class="container mt-3">
             <table class="table table-bordered">
@@ -106,8 +106,8 @@
               <a href="/" class="nav-link px-2 text-body-secondary">Home</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link px-2 text-body-secondary disabled"
-                >Features</a
+              <a href="#" class="nav-link px-2 text-body-secondary" id="top"
+                >Back to top</a
               >
             </li>
             <li class="nav-item">
@@ -143,6 +143,11 @@
             console.error(xhr.responseText);
           },
         });
+      });
+    </script>
+    <script>
+      $("top").click(function () {
+        alert($("body").scrollTop());
       });
     </script>
   </body>

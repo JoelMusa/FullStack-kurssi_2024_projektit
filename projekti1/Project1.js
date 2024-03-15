@@ -86,7 +86,7 @@ app.post("/ajaxmessage", (req, res) => {
 
     messages.push({ username, country, message });
 
-    let html = `<h1 class="pb-2">Guestbook</h1><div class="container mt-3"><table class="table table-bordered"><thead><tr><th>Username</th><th>Country</th><th>Message
+    let html = `<h1 class="pb-2 border-bottom">Messages</h1><div class="container mt-3"><table class="table table-bordered"><thead><tr><th>Username</th><th>Country</th><th>Message
       </th></tr></thead><tbody>`;
 
     for (const message of messages) {

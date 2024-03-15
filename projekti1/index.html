@@ -178,8 +178,8 @@
               <a href="/" class="nav-link px-2 text-body-secondary">Home</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link px-2 text-body-secondary disabled"
-                >Features</a
+              <a href="#" class="nav-link px-2 text-body-secondary" id="top"
+                >Back to top</a
               >
             </li>
             <li class="nav-item">
@@ -207,5 +207,11 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $("top").click(function () {
+        alert($("body").scrollTop());
+      });
+    </script>
   </body>
 </html>
