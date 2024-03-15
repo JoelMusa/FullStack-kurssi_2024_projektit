@@ -1,4 +1,5 @@
 # FullStack-Projekti1
 
-Palvelin luotu käyttäen Node.js ja express kehystä.
-Sovellus hakee polkujen avulla staattisia tiedostoja ja käyttää niitä.
+Palvelin on luotu käyttäen Node.js ja Express kehystä.
+Sovellus hakee polkujen avulla staattisia HTML tiedostoja ja julkaisee ne sivuille.
+Muotoiluun on käytetty Bootstrap 5 framewörkkiä ja JavaScriptin tukena jQuerya. 
