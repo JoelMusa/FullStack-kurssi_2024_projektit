@@ -19,22 +19,21 @@ app.get("/", (req, res) => {
 
 //Guestbook path
 app.get("/guestbook", (req, res) => {
-
   res.sendFile(path.join(__dirname, "/guestbook.html"));
+});
 
-  /* fs.readFile("./messages.json", (err, data) => {
+app.post("/guestbook", (req, res) => {
+
+  fs.readFile("./messages.json", (err, data) => {
     if (err) throw err;
-
+    let html;
     const messages = JSON.parse(data);
 
     for (const message of messages) {
       html += `<tr><td>${message.username}</td><td>${message.country}</td><td>${message.message}</td></tr>`;
     }
-
-    html += "</tbody></table></div>";
-
-    res.send(html); 
-  });*/
+    res.send(html)
+  });
 });
 
 //Newmessage path
@@ -62,7 +61,7 @@ app.post("/newmessage", (req, res) => {
   });
 });
 
-
+//Ajaxmessage path
 app.get("/ajaxmessage", (req, res) => {
   res.sendFile(path.join(__dirname, "/AJAX.html"));
 });

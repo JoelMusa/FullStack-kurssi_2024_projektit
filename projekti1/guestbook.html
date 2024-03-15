@@ -64,24 +64,21 @@
       </nav>
     </header>
     <page>
-      <div id="guestbook">
-        <div class="container mt-3">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Country</th>
-                <th>Message</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>${message.username}</td>
-                <td>${message.country}</td>
-                <td>${message.message}</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="container px-4 py-5" id="featured-3">
+        <h1 class="pb-2 border-bottom">Guestbook</h1>
+        <div id="guestbook">
+          <div class="container mt-3">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Country</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody id="messages"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </page>
@@ -132,5 +129,21 @@
         </footer>
       </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          type: "POST",
+          url: "/guestbook", // Replace with your backend endpoint
+          datatype: "json",
+          success: function (response) {
+            $("#messages").html(response);
+          },
+          error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+          },
+        });
+      });
+    </script>
   </body>
 </html>
