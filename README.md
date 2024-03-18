@@ -1,3 +1,3 @@
-# FullStack kurssi 2024 (5 op)
+# FullStack course 2024 (5 op)
 
-Kurssin päätavoitteena on oppia rakentamaan pieniä websovelluksia käyttämällä Node.js:ää backendissä, MongoDB:tä tietokantana ja Frontendissä jotakin frameworkkia.
+The main goal from this course is to learn develop little web applications using Node.js in the backend, MongoDB as database and a certain frontend framework eg React or Angular.

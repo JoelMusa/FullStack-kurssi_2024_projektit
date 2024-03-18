@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Project1 - Guestbook</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,8 +20,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" type="text/css" href="CommonCSS.css" />
   </head>
+  <!---->
   <body>
     <header>
       <nav
@@ -47,22 +53,25 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Home</a>
+                <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/ajaxmessage">Ajaxmesssage</a>
+                <a class="nav-link" href="/ajaxmessage">Ajax message</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/newmessage">Newmessage</a>
+                <a class="nav-link" href="/newmessage">New message</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="/guestbook">Messagelist</a>
+                <a class="nav-link active" aria-current="page" href="/guestbook"
+                  >Message list</a
+                >
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
+    <!---->
     <page>
       <div class="container px-4 py-5" id="featured-3">
         <h1 class="pb-2 border-bottom">Messages</h1>
@@ -129,12 +138,13 @@
         </footer>
       </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!---->
     <script>
+      //Making the AJAX call to the backend using jQuery, when loading the page.
       $(document).ready(function () {
         $.ajax({
           type: "POST",
-          url: "/guestbook", // Replace with your backend endpoint
+          url: "/guestbook",
           datatype: "json",
           success: function (response) {
             $("#messages").html(response);
@@ -146,6 +156,7 @@
       });
     </script>
     <script>
+      //Scroll to top of the page added to footer menu
       $("top").click(function () {
         alert($("body").scrollTop());
       });

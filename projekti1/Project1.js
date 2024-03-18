@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
+//Defining the port
 const port = process.env.PORT || 3000;
 
 // Middleware
@@ -19,9 +20,10 @@ app.get("/", (req, res) => {
 
 //Guestbook path
 app.get("/guestbook", (req, res) => {
-  res.sendFile(path.join(__dirname, "/guestbook.html"));
+  res.sendFile(path.join(__dirname, "/guestbook.html")); //Sends the html file 
 });
 
+//The request for this data is written on the guestbook.html file
 app.post("/guestbook", (req, res) => {
 
   fs.readFile("./messages.json", (err, data) => {
@@ -32,6 +34,7 @@ app.post("/guestbook", (req, res) => {
     for (const message of messages) {
       html += `<tr><td>${message.username}</td><td>${message.country}</td><td>${message.message}</td></tr>`;
     }
+    //Sends the JSON file data to the page
     res.send(html)
   });
 });
@@ -57,6 +60,7 @@ app.post("/newmessage", (req, res) => {
     fs.writeFile("./messages.json", JSON.stringify(messages), (err) => {
       if (err) throw err;
     });
+    //redirecting the user to guestbook page to read all the messages
     res.redirect('/guestbook')
   });
 });
@@ -69,6 +73,7 @@ app.get("/ajaxmessage", (req, res) => {
 app.post("/ajaxmessage", (req, res) => {
   const { username, country, message } = req.body;
 
+  //Check that none of the fields are empty
   if (!username || !country || !message) {
     res.send(`<div class="alert alert-dark text-center" role="alert">
     Error - All fields required!
@@ -83,7 +88,7 @@ app.post("/ajaxmessage", (req, res) => {
     }
 
     const messages = JSON.parse(data);
-
+    // Add the new message to the array
     messages.push({ username, country, message });
 
     let html = `<h1 class="pb-2 border-bottom">Messages</h1><div class="container mt-3"><table class="table table-bordered"><thead><tr><th>Username</th><th>Country</th><th>Message
@@ -95,8 +100,9 @@ app.post("/ajaxmessage", (req, res) => {
 
     html += "</tbody></table></div>";
 
+    //Sends the JSON file data to the page
     res.send(html);
-
+    // Write the updated messages back to the file
     fs.writeFile("./messages.json", JSON.stringify(messages), (err) => {
       if (err) {
         console.log("Error writing file:", err);
@@ -106,8 +112,7 @@ app.post("/ajaxmessage", (req, res) => {
   });
 });
 
-
-//Defining port
+//Tells the user which port the function is listening
 app.listen(port, function () {
   console.log("Listening port " + port + "!");
 });
