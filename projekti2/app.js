@@ -3,7 +3,9 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const mongoose = require("mongoose");
 const read = require("projekti2/readMongoDB.js")
-var app = express();
+
+
+const app = express();
 const port = process.env.PORT || 3000;
 
 
