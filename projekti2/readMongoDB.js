@@ -10,9 +10,10 @@ async function main() {
     const client = new MongoClient(uri);
 
     try {
+        console.log("Trying to connect")
         // Connect to the MongoDB cluster
         await client.connect();
-        console.log("Trying to connect")
+
         // Make the appropriate DB calls
         await listDatabases(client);
 
@@ -36,3 +37,4 @@ async function listDatabases(client) {
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
+
