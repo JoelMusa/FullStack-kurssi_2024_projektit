@@ -1,5 +1,8 @@
 const { MongoClient } = require('mongodb');
-
+const express = require("express");
+const bodyParser = require("body-parser");
+const fs = require("fs");
+const mongoose = require("mongoose");
 require('dotenv').config();
 
 
@@ -16,7 +19,6 @@ async function main() {
 
         // Make the appropriate DB calls
         await listDatabases(client);
-
     } catch (e) {
         console.error(e);
     } finally {
@@ -26,7 +28,7 @@ async function main() {
     }
 }
 
-main().catch(console.error);
+main().catch(err => console.log(err));
 
 /**
  * Print the names of all available databases

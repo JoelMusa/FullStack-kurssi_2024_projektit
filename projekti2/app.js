@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const mongoose = require("mongoose");
-const read = require("./readMongoDB.js")
+const read = require("./routes/readByIdItemRoute.js")
 
 
 const app = express();
@@ -12,7 +12,9 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/api/getall", function (req, res) {
-    read.main();
+    var moi = "Terve";
+    read(moi);
+    res.send("Hello world!");
 })
 
 app.get("/api/:id", function (req, res) { })
