@@ -1,42 +1,24 @@
-const { MongoClient } = require('mongodb');
-const express = require("express");
-const bodyParser = require("body-parser");
-const fs = require("fs");
-const mongoose = require("mongoose");
-require('dotenv').config();
+const express = require('express');
+const app = express.Router();
+const itemController = require('../controllers/itemController');
 
 
-
-async function main() {
-    const uri = process.env.MONGODB_URI;
-
-    const client = new MongoClient(uri);
-
+app.get('/api/:id', async (req, res) => {
     try {
-        console.log("Trying to connect")
-        // Connect to the MongoDB cluster
-        await client.connect();
+        //itemID reads the replaced :id 
+        const itemId = req.params.id;
+        //calling the function to do the database operation in the itemController file
+        const item = await itemController.getItemById(itemId);
 
-        // Make the appropriate DB calls
-        await listDatabases(client);
-    } catch (e) {
-        console.error(e);
-    } finally {
-        // Close the connection to the MongoDB cluster
-        await client.close();
-        console.log("Dismissing connection")
+        if (!item) {
+            return res.status(404).json({ error: 'Item not found' });
+        }
+
+        res.status(200).json(item);
+    } catch (error) {
+        console.error(error);
     }
-}
+});
 
-main().catch(err => console.log(err));
 
-/**
- * Print the names of all available databases
- */
-async function listDatabases(client) {
-    databasesList = await client.db().admin().listDatabases();
-
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
-
+module.exports = app;
