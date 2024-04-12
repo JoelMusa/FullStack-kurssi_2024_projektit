@@ -1,11 +1,12 @@
 require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
-const getAllRoute = require('./routes/readAllRoute');
-const getItemRoute = require('./routes/readByIdItemRoute');
+const readAllRoute = require('./routes/readAllRoute');
+const readByIdItemRoute = require('./routes/readByIdItemRoute');
 const addItemRoute = require('./routes/createItemRoute');
 const updateItemRoute = require('./routes/updateItemRoute');
 const deleteItemRoute = require('./routes/deleteItemRoute');
+const homeRoute = require('./routes/homeRoute')
 
 const app = express();
 const uri = process.env.MONGODB_URI;
@@ -22,8 +23,9 @@ mongoose.connect(uri, {
 app.use(express.json());
 
 // Mount routes
-app.use(getAllRoute);
-app.use(getItemRoute);
+app.use(homeRoute);
+app.use(readAllRoute);
+app.use(readByIdItemRoute);
 //app.use(addItemRoute);
 //app.use(updateItemRoute);
 //app.use(deleteItemRoute);
