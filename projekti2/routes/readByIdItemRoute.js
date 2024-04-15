@@ -5,10 +5,10 @@ const itemController = require('../controllers/itemController');
 
 app.get('/api/:id', async (req, res) => {
     try {
-        //itemID reads the replaced :id 
-        const itemId = req.params.id;
+        //id reads the replaced :id 
+        const id = req.params.id;
         //calling the function to do the database operation in the itemController file
-        const item = await itemController.getItemById(itemId);
+        const item = await itemController.getItemById(id);
 
         if (!item) {
             return res.status(404).json({ error: 'Item not found' });

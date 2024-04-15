@@ -4,7 +4,7 @@ const schema = require('../models/schema');
 
 // Get all items
 async function getAllItems() {
-    return await schema.find();
+    return await schema.find({});
 }
 
 // Get single item by ID
@@ -14,13 +14,13 @@ async function getItemById(id) {
 
 // Add a new item
 async function addItem(itemData) {
-    const newItem = new schema(itemData);
+    const newItem = new schema.create(itemData);
     return await newItem.save();
 }
 
 // Update an item by ID
 async function updateItemById(id, newData) {
-    return await schema.findByIdAndUpdate(id, newData, { new: true });
+    return await schema.findByIdAndUpdate(id, newData);
 }
 
 // Delete an item by ID
