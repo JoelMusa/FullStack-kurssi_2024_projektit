@@ -9,7 +9,7 @@ app.get('/api/getall', async (req, res) => {
         const items = await itemController.getAllItems();
         res.status(200).json(items);
     } catch (error) {
-        console.error(error);
+        res.status(500).json({ message: error.message });
     }
 });
 

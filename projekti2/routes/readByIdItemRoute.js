@@ -16,7 +16,7 @@ app.get('/api/:id', async (req, res) => {
 
         res.status(200).json(item);
     } catch (error) {
-        console.error(error);
+        res.status(500).json({ message: error.message });
     }
 });
 

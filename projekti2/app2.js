@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const readAllRoute = require('./routes/readAllRoute');
 const readByIdItemRoute = require('./routes/readByIdItemRoute');
-const addItemRoute = require('./routes/createItemRoute');
+const createItemRoute = require('./routes/createItemRoute');
 const updateItemRoute = require('./routes/updateItemRoute');
 const deleteItemRoute = require('./routes/deleteItemRoute');
 const homeRoute = require('./routes/homeRoute')
@@ -26,9 +26,9 @@ app.use(express.json());
 app.use(homeRoute);
 app.use(readAllRoute);
 app.use(readByIdItemRoute);
-//app.use(addItemRoute);
-//app.use(updateItemRoute);
-//app.use(deleteItemRoute);
+app.use(createItemRoute);
+app.use(updateItemRoute);
+app.use(deleteItemRoute);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
