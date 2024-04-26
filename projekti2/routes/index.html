@@ -58,25 +58,47 @@
         </div>
       </div>
     </nav>
-    <button onclick="renderItems()">getAll</button>
-    <ul id="itemList">
-      <!-- Database collection will be dynamically inserted here -->
-    </ul>
+    <!---->
+    <content>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <button onclick="renderItems()">getAll</button>
+            <ul id="itemList">
+              <!-- Database collection will be dynamically inserted here -->
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm"
+                >:id</span
+              >
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                id="itemId"
+                placeholder="fill in the _id of a document you want to see"
+              />
+            </div>
 
-    <button onclick="renderOneItem()">getOne</button>
-    <ul id="oneItem">
-      <!-- Single document from a collection will be dynamically inserted here-->
-    </ul>
-    <button onclick="renderItems()">getAll</button>
-    <button onclick="renderItems()">getAll</button>
-    <button onclick="renderItems()">getAll</button>
-    <h1>Items</h1>
-
+            <button onclick="renderOneItem()">getOne</button>
+            <ul id="oneItem">
+              <!-- Single document from a collection will be dynamically inserted here-->
+            </ul>
+          </div>
+          <div class="col"><button onclick="renderItems()">getAll</button></div>
+        </div>
+      </div>
+    </content>
     <script>
       // Function to fetch one document from the API
       async function getItemById(id) {
         try {
-          const response = await fetch("/api/getItemById/${id}");
+          const response = await fetch(`/api/${id}`);
           const data = await response.json();
           return data;
         } catch (error) {
@@ -86,18 +108,19 @@
 
       // Function to render items on the page
       async function renderOneItem() {
+        const id = document.getElementById("itemId").value; // Example ID
         const itemList = document.getElementById("oneItem");
-        const item = await getItemById("61d09b0796e301634636fba");
 
-        // Clear existing items
-        itemList.innerHTML = item;
+        // Fetch the item by ID
+        const item = await getItemById(id);
 
-        // Render each item
-        /*item.forEach((item) => {
-          const listItem = document.createElement("li");
-          listItem.textContent = item.name; // Assuming each item has a 'name' property
-          itemList.appendChild(listItem);
-        });*/
+        // Clear existing content
+        itemList.innerHTML = "";
+
+        // Render the item
+        const listItem = document.createElement("li");
+        listItem.textContent = item.name + item.quantity + item.price; // Assuming each item has a 'name' property
+        itemList.appendChild(listItem);
       }
 
       // Function to fetch all items from the API
@@ -122,7 +145,7 @@
         // Render each item
         items.forEach((item) => {
           const listItem = document.createElement("li");
-          listItem.textContent = item.name; // Assuming each item has a 'name' property
+          listItem.textContent = item.name + item.quantity + item.price; // Assuming each item has a 'name' property
           itemList.appendChild(listItem);
         });
       }

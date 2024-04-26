@@ -1,0 +1,26 @@
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <button onclick="renderItems()">getAll</button>
+      <ul id="itemList">
+        <!-- Database collection will be dynamically inserted here -->
+      </ul>
+    </div>
+    <div class="col">div class="grid text-center">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">:id</span>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+        </div>
+      </div>
+      <button onclick="renderOneItem()">getOne</button>
+      <ul id="oneItem">
+        <!-- Single document from a collection will be dynamically inserted here-->
+      </ul></div>
+    <div class="col"><button onclick="renderItems()">getAll</button></div>
+  </div>
+</div>
