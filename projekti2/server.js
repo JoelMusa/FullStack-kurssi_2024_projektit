@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes/route')
-
+const bodyParser = require("body-parser");
 const app = express();
 const uri = process.env.MONGODB_URI;
 
@@ -16,6 +16,7 @@ mongoose.connect(uri, {
 
 // Middleware
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Mount routes
 app.use(routes);

@@ -14,7 +14,7 @@ async function getItemById(id) {
 
 // Add a new item
 async function addItem(itemData) {
-    const newItem = new schema.create(itemData);
+    const newItem = new schema(itemData);
     return await newItem.save();
 }
 

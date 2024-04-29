@@ -39,7 +39,7 @@ app.get('/api/:id', async (req, res) => {
 app.put('/api/update/:id', async (req, res) => {
     try {
         const { id } = req.params;
-
+        const { updatedName, updatedQuantity, updatedPrice } = req.body
         const item = await itemController.updateItemById(id, req.body);
 
         if (!item) {
@@ -70,9 +70,13 @@ app.delete('/api/delete/:id', async (req, res) => {
 });
 
 app.post('/api/add', async (req, res) => {
+
+    const { name, quantity, price } = req.body;
+
     try {
         const product = await itemController.addItem(req.body);
         res.status(200).json(product);
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
