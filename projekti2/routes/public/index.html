@@ -228,10 +228,9 @@
           });
 
           if (response.ok) {
-            console.log("Item updated successfully");
             alert("Item updated successfully");
           } else {
-            console.error("Failed to update item");
+            
             alert("Failed to update item");
           }
         } catch (error) {
@@ -250,11 +249,11 @@
           });
 
           if (response.ok) {
-            console.log("Item deleted successfully");
+           
             // Optionally, provide feedback to the user
             alert("Item deleted successfully");
           } else {
-            console.error("Failed to delete item");
+            
             // Optionally, provide feedback to the user
             alert("Failed to delete item");
           }
@@ -295,6 +294,7 @@
         const tableHeader = document.createElement("thead");
         tableHeader.innerHTML = `
             <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
@@ -308,6 +308,7 @@
         // Create a row for the item
         const row = document.createElement("tr");
         row.innerHTML = `
+            <td>${item._id}</td>
             <td>${item.name}</td>
             <td>${item.quantity}</td>
             <td>${item.price}</td>
@@ -348,6 +349,7 @@
         const tableHeader = document.createElement("thead");
         tableHeader.innerHTML = `
             <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
@@ -360,6 +362,7 @@
         items.forEach((item) => {
           const row = document.createElement("tr");
           row.innerHTML = `
+                <td>${item._id}</td>
                 <td>${item.name}</td>
                 <td>${item.quantity}</td>
                 <td>${item.price}</td>
