@@ -48,7 +48,7 @@ app.get('/api/:id', async (req, res) => {
 app.put('/api/update/:id', async (req, res) => {
     try {
         // Extract the ID and updated fields from the request parameters and body
-        const id = req.params;
+        const id = req.params.id;
 
         // Update the item in the database using itemController
         const item = await itemController.updateItemById(id, req.body);

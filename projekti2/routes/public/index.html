@@ -95,6 +95,7 @@
                 id="itemName"
                 name="name"
                 placeholder="Enter item name"
+                required
               />
             </div>
             <div class="input-group input-group-sm mb-3">
@@ -107,6 +108,7 @@
                 id="itemQuantity"
                 name="quantity"
                 placeholder="Enter item quantity"
+                required
               />
             </div>
             <div class="input-group input-group-sm mb-3">
@@ -119,6 +121,7 @@
                 id="itemPrice"
                 name="price"
                 placeholder="Enter item price"
+                required
               />
             </div>
             <!-- Button to submit the form and add a new item -->
@@ -270,8 +273,10 @@
           const response = await fetch(`/api/${id}`);
           const data = await response.json();
           return data;
+
         } catch (error) {
-          console.error("document with " + id + "not found ", error);
+          console.error("document not found!", error);
+          alert("document not found!")
         }
       }
 
