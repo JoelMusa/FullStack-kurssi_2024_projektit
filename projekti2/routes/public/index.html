@@ -359,7 +359,8 @@
 
         // Create table body
         const tableBody = document.createElement("tbody");
-        items.forEach((item) => {
+        
+        for (const item of items){
           const row = document.createElement("tr");
           row.innerHTML = `
                 <td>${item._id}</td>
@@ -368,7 +369,7 @@
                 <td>${item.price}</td>
             `;
           tableBody.appendChild(row);
-        });
+        };
         table.appendChild(tableBody);
 
         // Append table to itemList
