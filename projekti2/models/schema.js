@@ -20,10 +20,6 @@ const ProductSchema = mongoose.Schema(
             default: 0,
         },
 
-        image: {
-            type: String,
-            required: false,
-        },
     },
     {
         timestamps: true,
