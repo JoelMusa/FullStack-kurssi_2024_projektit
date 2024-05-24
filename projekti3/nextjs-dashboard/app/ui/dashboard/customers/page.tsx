@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <CustomersTable customers={[]} />;
+  return (<CustomersTable customers={[]} />);
 }
