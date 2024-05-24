@@ -16,6 +16,14 @@ export default function LoginPage() {
           </div>
         </div>
         <LoginForm />
+
+        <div className="flex-1 rounded-lg bg-blue-500 px-6 pb-4 pt-8">
+          <div className="w-32 text-white md:w-36">
+            <h2>Demo user</h2>
+            <p>Username: user@nextmail.com</p>
+            <p>Password: 123456</p>
+          </div>
+        </div>
       </div>
     </main>
   );
