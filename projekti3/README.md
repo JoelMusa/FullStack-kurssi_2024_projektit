@@ -1,4 +1,4 @@
-# FullStack-Project2
+# FullStack-Project3
 
 This project is introduction to Next.js with React. I will do a little application with this tutorial: https://nextjs.org/learn/dashboard-app
 
